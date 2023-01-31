@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox")
+require("@nomiclabs/hardhat-ethers")
 require("./tasks")
 require("dotenv").config()
 
@@ -41,11 +42,19 @@ module.exports = {
                 COMPILER_SETTINGS,
             },
             {
+                version: "0.6.12",
+                COMPILER_SETTINGS,
+            },
+            {
                 version: "0.6.6",
                 COMPILER_SETTINGS,
             },
             {
                 version: "0.4.24",
+                COMPILER_SETTINGS,
+            },
+            {
+                version: "0.4.19",
                 COMPILER_SETTINGS,
             },
         ],
@@ -57,8 +66,9 @@ module.exports = {
             forking: {
                 url: MAINNET_RPC_URL,
                 blockNumber: FORKING_BLOCK_NUMBER,
-                enabled: false,
+                enabled: true,
             },
+            enabled: true,
             chainId: 31337,
         },
         localhost: {
