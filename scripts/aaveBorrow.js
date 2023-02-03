@@ -25,6 +25,21 @@ async function main() {
         lendingPool,
         deployer.address
     )
+
+    const daiPrice = await getDAIPrice()
+    
+
+    // Borrow Time
+}
+
+async function getDAIPrice() {
+    const daiEthPriceFeed = await ethers.getContractAt(
+        "contracts/interfaces/AggregatorV3Interface.sol:AggregatorV3Interface",
+        "0x773616E4d11A78F511299002da57A0a94577F1f4"
+    )
+    const price = (await daiEthPriceFeed.latestRoundData())[1]
+    console.log(`The DAI/ETH price is ${price.toString()}`)
+    return price
 }
 
 async function getBorrowUserData(lendingPool, account) {
